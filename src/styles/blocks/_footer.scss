@@ -1,0 +1,25 @@
+.footer {
+    padding: toRem(15) 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    // .footer__copy
+
+    &__copy {
+    }
+
+    // .footer__social
+
+    &__social {
+        display: flex;
+        align-items: center;
+        @include adaptiveValue("gap", 32, 16);
+    }
+
+    // .footer__icon
+
+    &__icon {
+        width: toRem(42);
+        height: toRem(42);
+    }
+}

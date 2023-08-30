@@ -1,0 +1,65 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: toRem(80);
+
+    // .navbar__logo
+
+    &__logo {
+        @include adaptiveValue("font-size", 24, 20);
+        font-weight: 600;
+    }
+
+    // .navbar__links
+
+    &__links {
+        display: flex;
+        @include adaptiveValue("gap", 32, 10);
+        align-items: center;
+    }
+    // .navbar__links
+    &__link {
+        position: relative;
+        line-height: 1.8;
+        &::before {
+            content: "";
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            height: toRem(2);
+            border-radius: toRem(8);
+            background: rgb(9, 9, 121);
+            background: linear-gradient(90deg, rgb(6, 6, 71) 0%, rgba(0, 212, 255, 1) 50%, rgb(6, 6, 71) 100%);
+            transition: transform 0.3s ease;
+            transform: scale(0);
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                &::before {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+
+    // .navbar__logout
+
+    &__logout {
+        padding: toRem(10) toRem(24);
+        background: rgb(9, 9, 121);
+        background: linear-gradient(90deg, rgb(10, 10, 92) 0%, rgb(0, 213, 255) 50%, rgb(10, 10, 92) 100%);
+        border-radius: toRem(20);
+        font-weight: 600;
+        @include adaptiveValue("font-size", 20, 17);
+        transition: all 0.5s;
+        opacity: 0.8;
+        color: #000;
+        @media (any-hover: hover) {
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
