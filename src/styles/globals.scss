@@ -7,9 +7,14 @@
 
 //components
 @import "./components/button";
+@import "./components/darkMode";
+
 //blocks
 @import "./blocks/navbar";
 @import "./blocks/footer";
 @import "./blocks/hero";
 @import "./blocks/about";
 @import "./blocks/portfolio";
+@import "./blocks/category";
+@import "./blocks/blog";
+@import "./blocks/post";

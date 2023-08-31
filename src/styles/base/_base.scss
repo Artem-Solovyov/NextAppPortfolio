@@ -27,8 +27,17 @@ $responsiveType: 1;
 
 body {
     @include adaptiveValue("font-size", 18, 16);
-    background-color: #151515;
-    color: #fff;
+    .theme {
+        transition: all 1s ease;
+    }
+    .dark {
+        background-color: #151515;
+        color: #fff;
+    }
+    .light {
+        background-color: #fff;
+        color: #000;
+    }
     // Скролл заблокирован
     .lock & {
         overflow: hidden;
