@@ -1,0 +1,93 @@
+.dashboard {
+    display: flex;
+    gap: 100px;
+    // .dashboard__post
+    &__input {
+        padding: 10px;
+        background-color: transparent;
+        border: 2px solid #bbb;
+        border-radius: 3px;
+        color: #bbb;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    &__textarea {
+        padding: 10px;
+        background-color: transparent;
+        border: 2px solid #bbb;
+        border-radius: 3px;
+        color: #bbb;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    &__button {
+        padding: 20px;
+        cursor: pointer;
+        background-color: #53c28b;
+        border: none;
+        border-radius: 5px;
+        color: #eee;
+        font-weight: bold;
+    }
+    &__new {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    &__post {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 50px 0px;
+    }
+
+    // .dashboard__image
+
+    &__image {
+        position: relative;
+        width: 200px;
+        height: 100px;
+        position: Ū;
+        &--02 {
+            width: toRem(300);
+            margin: 0 auto;
+            position: relative;
+        }
+    }
+
+    &__img {
+        object-fit: cover;
+        &--02 {
+            width: toRem(300);
+            height: toRem(300);
+            object-fit: cover;
+        }
+    }
+    &__img-text {
+        position: absolute;
+        bottom: 2%;
+        @include adaptiveValue("font-size", 12, 10);
+        line-height: 1.4;
+        padding: toRem(4) toRem(6);
+        background-color: rgba(138, 136, 136, 0.604);
+        border-radius: toRem(18);
+    }
+
+    // .dashboard__post-title
+
+    &__post-title {
+    }
+
+    // .dashboard__delete
+
+    &__delete {
+        cursor: pointer;
+        color: red;
+    }
+    // .dachboard__posts
+
+    &__posts {
+        flex: 1;
+    }
+}

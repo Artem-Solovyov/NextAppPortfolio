@@ -1,0 +1,27 @@
+.auth {
+    text-align: center;
+    padding-top: toRem(40);
+    // .auth__link
+    &__form {
+        padding: toRem(30) 0;
+    }
+
+    &__link {
+        @include adaptiveValue("font-size", 26, 18);
+        line-height: 1.4;
+        padding: toRem(8) toRem(16);
+        border-radius: toRem(30);
+        background-color: #797373;
+        &:not(:last-child) {
+            margin: 0px toRem(20) 0px 0px;
+        }
+        @media (any-hover: hover) {
+            &:hover {
+                background-color: #524e4e;
+            }
+        }
+        &.active {
+            background-color: #524e4e;
+        }
+    }
+}

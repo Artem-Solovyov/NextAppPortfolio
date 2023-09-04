@@ -1,0 +1,53 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    // .register__title
+    &__error {
+        @include adaptiveValue("font-size", 16, 14);
+        color: #e78989;
+    }
+    &__title {
+    }
+
+    // .register__subtitle
+
+    &__subtitle {
+    }
+
+    // .register__form
+
+    &__form {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    // .register__input
+
+    &__input {
+        padding: 20px;
+        background-color: transparent;
+        border: 2px solid #bbb;
+        color: #bbb;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    // .register__button
+
+    &__button {
+        width: 300px;
+        padding: 20px;
+        cursor: pointer;
+        background-color: #53c28b;
+        border: none;
+        border-radius: 5px;
+        color: #eee;
+        font-weight: bold;
+    }
+}

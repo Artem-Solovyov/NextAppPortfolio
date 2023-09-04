@@ -1,54 +1,63 @@
-"use client"
-import Link from "next/link"
+"use client";
+import Link from "next/link";
 import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
-
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const links = [
-    {
-      id: 1,
-      title: "Home",
-      url: "/",
-    },
-    {
-      id: 2,
-      title: "Portfolio",
-      url: "/portfolio",
-    },
-    {
-      id: 3,
-      title: "Blog",
-      url: "/blog",
-    },
-    {
-      id: 4,
-      title: "About",
-      url: "/about",
-    },
-    {
-      id: 5,
-      title: "Contact",
-      url: "/contact",
-    },
-    {
-      id: 6,
-      title: "Dashboard",
-      url: "/dashboard",
-    },
-  ];
+  {
+    id: 1,
+    title: "Home",
+    url: "/",
+  },
+  {
+    id: 2,
+    title: "Portfolio",
+    url: "/portfolio",
+  },
+  {
+    id: 3,
+    title: "Blog",
+    url: "/blog",
+  },
+  {
+    id: 4,
+    title: "About",
+    url: "/about",
+  },
+  {
+    id: 5,
+    title: "Contact",
+    url: "/contact",
+  },
+  {
+    id: 6,
+    title: "Dashboard",
+    url: "/dashboard",
+  },
+];
 
 const Navbar = () => {
+  const session = useSession();
   return (
     <nav className="navbar">
-      <Link href='/' className="navbar__logo">MyApp</Link>
+      <Link href="/" className="navbar__logo">
+        MyApp
+      </Link>
       <div className="navbar__links">
-        <DarkModeToggle/>
+        <DarkModeToggle />
         {links.map((link) => (
-          <Link key={link.id} href={link.url} className="navbar__link">{link.title}</Link>
+          <Link key={link.id} href={link.url} className="navbar__link">
+            {link.title}
+          </Link>
         ))}
-        <button className="navbar__logout" onClick={()=>{console.log("logged out");}}>Logout</button>
+        {session.status == "authenticated" && (
+          <button className="navbar__logout" onClick={signOut}>
+            Logout
+          </button>
+        )}
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
