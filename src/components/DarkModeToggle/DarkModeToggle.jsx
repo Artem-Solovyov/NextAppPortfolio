@@ -1,15 +1,15 @@
-import { ThemeContext } from "@/context/ThemeContext"
-import { useContext } from "react"
+import { ThemeContext } from "@/context/ThemeContext";
+import { useContext } from "react";
 
 const DarkModeToggle = () => {
-    const {toggle, mode} = useContext(ThemeContext)
+  const { toggle, mode } = useContext(ThemeContext);
   return (
     <div className="dark-mode" onClick={toggle}>
-        <div className="dark-mode__icon">🌙</div>
-        <div className="dark-mode__icon">🔆</div>
-      <div className="dark-mode__ball" style={mode === "light" ? { left: "2px"} : {right: "2px"}} ></div>
+      <div className="dark-mode__icon">🌙</div>
+      <div className="dark-mode__icon">🔆</div>
+      <div className={`dark-mode__ball ${mode === "light" ? "left" : "right"}`}></div>
     </div>
-  )
-}
+  );
+};
 
-export default DarkModeToggle
+export default DarkModeToggle;

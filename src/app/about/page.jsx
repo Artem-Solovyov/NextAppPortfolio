@@ -1,63 +1,52 @@
-import Button from "@/components/Button/Button"
-import Image from "next/image"
+import Button from "@/components/Button/Button";
+import Image from "next/image";
 
 const About = () => {
   return (
-   <div className="about">
+    <div className="about">
       <div className="about__image">
-        <Image
-          src="https://images.pexels.com/photos/2163950/pexels-photo-2163950.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          fill={true}
-          alt="about us"
-          className="about__img"
-        />
+        <Image src="/websites.jpg" fill={true} alt="about us" className="about__img" />
         <div className="about__img-container">
-          <h1 className="about__img-title">Lorem ipsum dolor sit</h1>
-          <h2 className="about__img-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </h2>
+          <h2 className="about__img-text">A bit about myself and this website.</h2>
         </div>
       </div>
 
       <div className="about__content">
         <div className="about__item">
-          <h1 className="about__title">Who Are We?</h1>
+          <h1 className="about__title">Who am I?</h1>
           <p className="about__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            quae dolor, optio voluptatibus magnam iure esse tempora beatae. A
-            suscipit eos. Animi quibusdam cum omnis officiis voluptatum quo ea
-            eveniet? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Ducimus quae dolor, optio voluptatibus magnam iure esse tempora
-            beatae, a suscipit eos. Animi quibusdam cum omnis officiis
+            My name is Artem, and I have been involved in web development for two years, including one year of intensive
+            practice. I have created numerous single-page websites, including those related to cryptocurrencies. I've
+            built websites using both pure React and in combination with Next.js. Additionally, I have experience with
+            websites on the WordPress CRM system.
             <br />
-            <br />
-            voluptatum quo ea eveniet? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ducimus quae dolor, optio voluptatibus magnam iure
-            esse tempora beatae, a suscipit eos. Animi quibusdam cum omnis
-            officiis voluptatum quo ea eveniet?
+            <br />I have developed a variety of functional websites, as well as aesthetically pleasing designs that are
+            well-crafted. You can explore some of my work on my portfolio website. Thank you for your time, and have a
+            great day!
           </p>
+          <Button url="https://portfolio-artem-soloviov.netlify.app" text="Portfolio" />
         </div>
 
         <div className="about__item">
-          <h1 className="about__title">What We Do?</h1>
+          <h2 className="about__title">What did I use?</h2>
           <p className="about__text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            quae dolor, optio voluptatibus magnam iure esse tempora beatae, a
-            suscipit eos. Animi quibusdam cum omnis officiis voluptatum quo ea
-            eveniet? Lorem ipsum dolor sit amet consectetur adipisicing elit. -
-            Creative Illustrations
+            This website is built with Next.js 13.4 in combination with React 18.2. MongoDB serves as the database. API
+            endpoints were created using Next.js. I employed SWR for API communication, as I find this library
+            appealing. NextAuth was chosen and implemented for authentication. The site is styled using SASS following
+            the BEM methodology.
             <br />
-            <br /> - Dynamic Websites
-            <br />
-            <br /> - Fast and Handy
-            <br />
-            <br /> - Mobile Apps
+            <br /> - Next.js
+            <br /> - React.js
+            <br /> - NextAuth
+            <br /> - Mongoose
+            <br /> - SWR
+            <br /> - SCSS
           </p>
-          <Button url="/contact" text="Contact" />
+          <Button url="/dashboard" text="Create post" />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

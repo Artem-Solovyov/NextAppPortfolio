@@ -13,6 +13,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState("");
 
   const router = useRouter();
   useEffect(() => {
@@ -29,6 +30,7 @@ const Register = () => {
     // const name = e.target[0].value;
     // const email = e.target[1].value;
     // const password = e.target[2].value;
+
     if (!errorName) {
       try {
         const res = await fetch("/api/auth/register", {
@@ -39,6 +41,7 @@ const Register = () => {
           body: JSON.stringify({
             name,
             email,
+            avatar,
             password,
           }),
         });
@@ -55,7 +58,7 @@ const Register = () => {
       <form action="" className="register__form form" onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Username"
+          placeholder="Username*"
           required
           className="register__input"
           value={name}
@@ -64,15 +67,22 @@ const Register = () => {
         {errorName && <h3 className="register__error">Це ім'я вже використовується.</h3>}
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email*"
           required
           className="register__input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          type="text"
+          placeholder="Image"
+          className="register__input"
+          value={avatar}
+          onChange={(e) => setAvatar(e.target.value)}
+        />
+        <input
           type="password"
-          placeholder="Password"
+          placeholder="Password*"
           required
           className="register__input"
           value={password}

@@ -1,11 +1,12 @@
 import Navbar from "@/components/navbar/Navbar";
 import "@/styles/globals.scss";
-import { Inter } from "next/font/google";
+import { Space_Mono, Poppins } from "next/font/google";
 import Footer from "@/components/footer/Footer";
 import { ThemeProvider } from "@/context/ThemeContext";
 import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], display: "swap", variable: "--font-space" });
+const poppins = Poppins({ weight: "500", subsets: ["latin"], display: "swap", variable: "--font-poppins" });
 
 export const metadata = {
   title: "My App",
@@ -14,16 +15,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
+      <body>
         <ThemeProvider>
           <AuthProvider>
             <div className="wrapper wrapper__container">
               <Navbar />
-              <main className="content">
-                {children}
-              </main>
-              <Footer/>
+              <main className="content">{children}</main>
+              <Footer />
             </div>
           </AuthProvider>
         </ThemeProvider>

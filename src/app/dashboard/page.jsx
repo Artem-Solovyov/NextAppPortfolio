@@ -9,7 +9,7 @@ import useSWR from "swr";
 const Dashboard = () => {
   const session = useSession();
   const router = useRouter();
-
+  console.log(session.data);
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, mutate, isLoading } = useSWR(`api/posts?username=${session?.data?.user.name}`, fetcher);
 
@@ -37,6 +37,7 @@ const Dashboard = () => {
           img,
           content,
           username: session.data.user.name,
+          userimage: session.data.user.image,
         }),
       });
       mutate();
@@ -67,9 +68,9 @@ const Dashboard = () => {
                     <Image src={post.img} alt={post.title} width={200} height={200} className="dashboard__img" />
                   </div>
                   <h2 className="dashboard__post-title">{post.title}</h2>
-                  <span className="dashboard__delete" onClick={() => handleDelete(post._id)}>
+                  <div className="dashboard__delete" onClick={() => handleDelete(post._id)}>
                     X
-                  </span>
+                  </div>
                   <Link href={`/dashboard/edit/${post._id}`} className="dashboard__edit">
                     Редагувати
                   </Link>

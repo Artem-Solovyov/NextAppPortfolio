@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import Link from "next/link";
+import Image from "next/image";
 
 const Comments = ({ idPost }) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -20,6 +21,7 @@ const Comments = ({ idPost }) => {
           idPost,
           comment: value,
           author: session.data.user.name,
+          image: session.data.user.image,
         }),
       });
       mutate();
@@ -62,16 +64,19 @@ const Comments = ({ idPost }) => {
         ) : (
           data.map((comment) => (
             <div className="comments__item item-comment" key={comment._id}>
-              <div className="item-comment__content">{comment.comment}</div>
-              <div className="item-comment__author">{comment.author}</div>
-              <div className="item-comment__day">{comment.createdAt.slice(0, 10)}</div>
-              <div className="item-comment__time">{comment.createdAt.slice(11, 16)}</div>
+              <Image src={comment.image} alt={comment.comment} width={50} height={50} />
+              <div className="item-comment__body">
+                <div className="item-comment__author">{comment.author}</div>
+                <div className="item-comment__content">{comment.comment}</div>
+                <div className="item-comment__day">{comment.createdAt.slice(0, 10)}</div>
+                <div className="item-comment__time">{comment.createdAt.slice(11, 16)}</div>
 
-              {session?.data?.user.name === comment.author ? (
-                <button className="item-comment__delete" onClick={() => handleDelete(comment._id)}>
-                  Delete
-                </button>
-              ) : null}
+                {session?.data?.user.name === comment.author ? (
+                  <button className="item-comment__delete" onClick={() => handleDelete(comment._id)}>
+                    Delete
+                  </button>
+                ) : null}
+              </div>
             </div>
           ))
         )}

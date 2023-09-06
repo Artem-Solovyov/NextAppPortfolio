@@ -34,6 +34,7 @@ const Edit = ({ params }) => {
           img: data.img,
           content: area,
           username: data.username,
+          userimage: data.userimage,
         }),
       });
       setLoading(false);

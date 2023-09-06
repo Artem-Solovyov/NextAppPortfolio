@@ -1,7 +1,11 @@
 .dark-mode {
-    width: 42px;
-    height: 24px;
-    border: 1.5px solid #01c0fa;
+    width: toRem(45);
+    height: toRem(25);
+    border: 1.5px solid #333334;
+    background: #2c2b2b;
+    box-shadow:
+        inset 5px 5px 1px #262525,
+        inset -5px -5px 1px #323131;
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -9,8 +13,15 @@
     padding: 2px;
     position: relative;
     cursor: pointer;
+    overflow: hidden;
     // .dark-mode__icon
-
+    .light & {
+        border: 1.5px solid #fefeff;
+        background: #ededed;
+        box-shadow:
+            inset 5px 5px 8px #d8d8d8,
+            inset -5px -5px 8px #ffffff;
+    }
     &__icon {
         font-size: 12px;
     }
@@ -18,10 +29,23 @@
     // .dark-mode__ball
 
     &__ball {
-        width: 15px;
-        height: 15px;
-        background-color: #01c0fa;
+        width: 17px;
+        height: 17px;
         border-radius: 50%;
+        background: linear-gradient(145deg, #2f2e2e, #282727);
+        box-shadow:
+            5px 5px 10px #121111,
+            -5px -5px 10px #3b3a3a;
         position: absolute;
+        transition: transform 0.6s ease;
+        .light & {
+            background: #ededed;
+            box-shadow:
+                inset 5px 5px 8px #c3c1c1,
+                inset -5px -5px 8px #dbdada;
+        }
+        &.right {
+            transform: translate(125%, 0);
+        }
     }
 }

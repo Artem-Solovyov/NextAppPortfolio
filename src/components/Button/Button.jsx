@@ -1,11 +1,13 @@
-import Link from "next/link"
+import Link from "next/link";
 
-const Button = ({text, url}) => {
+const Button = ({ text, url }) => {
   return (
-      <Link href={url}>
-          <button className="button">{text}</button>
-      </Link>
-  )
-}
+    <Link href={url}>
+      <button className="button">
+        <span>{text}</span>
+      </button>
+    </Link>
+  );
+};
 
-export default Button
+export default Button;

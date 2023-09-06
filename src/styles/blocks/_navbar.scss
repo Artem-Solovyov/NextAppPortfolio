@@ -1,65 +1,251 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: toRem(80);
-
+    display: grid;
+    grid-template-columns: toRem(300) auto toRem(300);
+    min-height: toRem(80);
+    @media (max-width: em(1100)) {
+        grid-template-columns: toRem(200) auto toRem(200);
+    }
+    @media (max-width: em(880)) {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "logo user"
+            "menu menu";
+    }
     // .navbar__logo
 
     &__logo {
-        @include adaptiveValue("font-size", 24, 20);
-        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        @include adaptiveValue("font-size", 30, 20);
+        @media (any-hover: hover) {
+            &:hover {
+                transform: scale(1.02);
+            }
+        }
+        @media (max-width: em(880)) {
+            grid-area: logo;
+            justify-content: flex-start;
+        }
     }
 
     // .navbar__links
 
     &__links {
         display: flex;
-        @include adaptiveValue("gap", 32, 10);
         align-items: center;
-    }
-    // .navbar__links
-    &__link {
-        position: relative;
-        line-height: 1.8;
-        &::before {
-            content: "";
-            bottom: 0;
-            left: 0;
-            position: absolute;
-            width: 100%;
-            height: toRem(2);
-            border-radius: toRem(8);
-            background: rgb(9, 9, 121);
-            background: linear-gradient(90deg, rgb(6, 6, 71) 0%, rgba(0, 212, 255, 1) 50%, rgb(6, 6, 71) 100%);
-            transition: transform 0.3s ease;
-            transform: scale(0);
+        justify-content: center;
+        @include adaptiveValue("gap", 20, 10);
+        border-radius: 0 0 toRem(80) toRem(80);
+
+        background: #1d1b1b;
+        box-shadow:
+            inset 5px 5px 8px #100f0f,
+            inset -5px -5px 8px #2a2727;
+        .light & {
+            background: #ededed;
+            box-shadow:
+                inset 5px 5px 8px #d8d8d8,
+                inset -5px -5px 8px #ffffff;
         }
+        @media (max-width: em(880)) {
+            padding: toRem(18) 0;
+            border-radius: toRem(80);
+            grid-area: menu;
+        }
+        @media (max-width: em(375)) {
+            flex-wrap: wrap;
+        }
+    }
+
+    // .navbar__link
+
+    &__link {
+        @media (min-width: em(1450)) {
+            display: flex;
+            justify-content: center;
+            width: toRem(150);
+        }
+        padding: toRem(8) toRem(12);
+        border-radius: 10px;
+        background: linear-gradient(145deg, #272525, #202020);
+        background: #242323;
+        box-shadow:
+            3px 3px 5px #0e0e0e,
+            -3px -3px 5px #3a3838;
+        transition: all 0.3s ease;
         @media (any-hover: hover) {
             &:hover {
-                &::before {
-                    transform: scale(1);
+                box-shadow:
+                    1px 1px 5px #0e0e0e,
+                    -1px -1px 5px #3a3838;
+            }
+        }
+        @media (max-width: em(430)) {
+            padding: toRem(7) toRem(8);
+        }
+
+        .light & {
+            background: #ededed;
+
+            background: linear-gradient(145deg, #fefefe, #d5d5d5);
+            box-shadow:
+                3px 3px 6px #a4a4a4,
+                -3px -3px 6px #ffffff;
+            @media (any-hover: hover) {
+                &:hover {
+                    box-shadow:
+                        1px 1px 6px #a4a4a4,
+                        -1px -1px 6px #ffffff;
                 }
             }
         }
     }
 
+    // .navbar__right
+
+    &__right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        @include adaptiveValue("column-gap", 42, 8);
+        @media (max-width: em(1100)) and (min-width: em(881)) {
+            flex-direction: column-reverse;
+            row-gap: toRem(10);
+            align-items: end;
+        }
+        @media (max-width: em(880)) {
+            grid-area: user;
+        }
+    }
+
+    // .navbar__user
+
+    &__user {
+        @media (max-width: em(1100)) and (min-width: em(881)) {
+            padding-top: toRem(10);
+        }
+        @media (max-width: em(880)) {
+            padding: toRem(10) 0;
+        }
+        display: flex;
+        align-items: center;
+        @include adaptiveValue("gap", 30, 8);
+    }
+
     // .navbar__logout
 
     &__logout {
-        padding: toRem(10) toRem(24);
-        background: rgb(9, 9, 121);
-        background: linear-gradient(90deg, rgb(10, 10, 92) 0%, rgb(0, 213, 255) 50%, rgb(10, 10, 92) 100%);
-        border-radius: toRem(20);
-        font-weight: 600;
-        @include adaptiveValue("font-size", 20, 17);
-        transition: all 0.5s;
-        opacity: 0.8;
-        color: #000;
+        transition: all 0.3s ease;
+        padding: toRem(12) toRem(18);
+        border-radius: 10px;
+        background: #2c2b2b;
+
+        background: #242323;
+        box-shadow:
+            inset 1px 1px 5px #0e0e0e,
+            inset -1px -1px 5px #3a3838;
+
         @media (any-hover: hover) {
             &:hover {
-                opacity: 1;
+                box-shadow:
+                    inset 3px 3px 5px #0e0e0e,
+                    inset -3px -3px 5px #3a3838;
             }
         }
+        &--in {
+            margin-top: toRem(10);
+            margin-bottom: toRem(10);
+        }
+        .light & {
+            border-radius: 10px;
+            background: #ededed;
+            box-shadow:
+                inset 3px 3px 8px #d8d8d8,
+                inset -3px -3px 8px #ffffff;
+            @media (any-hover: hover) {
+                &:hover {
+                    box-shadow:
+                        inset 7px 7px 8px #d8d8d8,
+                        inset -7px -7px 8px #ffffff;
+                }
+            }
+        }
+    }
+
+    // .navbar__avatar
+
+    &__avatar {
+        cursor: pointer;
+        padding: toRem(1);
+        border: 1px solid #434242;
+
+        border-radius: 50%;
+        background: #2c2b2b;
+        box-shadow:
+            inset 5px 5px 9px #262525,
+            inset -5px -5px 9px #323131;
+        .light & {
+            border: 2px solid #fbfafa;
+            background: #ededed;
+            box-shadow:
+                inset 5px 5px 8px #d8d8d8,
+                inset -5px -5px 8px #ffffff;
+        }
+    }
+
+    // .navbar__profile
+
+    &__profile {
+        position: relative;
+        @media (any-hover: hover) {
+            &:hover {
+                .navbar__data {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+
+    // .navbar__data
+
+    &__data {
+        z-index: 10;
+        transition: all 0.3s ease;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        position: absolute;
+        top: 130%;
+        right: 0;
+        width: max-content;
+        padding: toRem(10) toRem(16);
+        border-radius: 10px;
+        background: #2c2b2b;
+        box-shadow:
+            inset 5px 5px 9px #262525,
+            inset -5px -5px 9px #323131;
+        .light & {
+            background: #ededed;
+            box-shadow:
+                inset 5px 5px 8px #d8d8d8,
+                inset -5px -5px 8px #ffffff;
+        }
+    }
+
+    // .navbar__name
+
+    &__name {
+        font-size: toRem(15);
+        margin-bottom: toRem(8);
+    }
+
+    // .navbar__email
+
+    &__email {
+        font-size: toRem(14);
     }
 }

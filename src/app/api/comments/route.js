@@ -8,7 +8,7 @@ export const GET = async (request) => {
 
   try {
     await connect();
-    const comments = await Comment.find(post && { idPost: post });
+    const comments = (await Comment.find(post && { idPost: post })).reverse();
 
     return new NextResponse(JSON.stringify(comments), { status: 200 });
   } catch (error) {

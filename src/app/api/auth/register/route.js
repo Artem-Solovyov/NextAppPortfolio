@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
 export const POST = async (request) => {
-  const { name, email, password } = await request.json();
+  const { name, email, avatar, password } = await request.json();
 
   await connect();
 
@@ -13,6 +13,7 @@ export const POST = async (request) => {
   const newUser = new User({
     name,
     email,
+    image: avatar ? avatar : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png",
     password: hashedPassword,
   });
 

@@ -30,7 +30,7 @@ const BlogId = async ({ params }) => {
           <h1 className="post__title">{data.title}</h1>
           <p className="post__desc">{data.desc}</p>
           <div className="post__author">
-            <Image src={data.img} alt="" width={40} height={40} className="post__avatar" />
+            <Image src={data.userimage} alt="" width={40} height={40} className="post__avatar" />
             <span className="post__username">{data.username}</span>
           </div>
         </div>

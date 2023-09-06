@@ -1,18 +1,50 @@
 .button {
-    padding: toRem(14) toRem(30);
-    cursor: pointer;
-    background: linear-gradient(90deg, rgb(10, 10, 92) 0%, rgb(6, 164, 195) 50%, rgb(10, 10, 92) 100%);
-    border: none;
-    border-radius: 5px;
-    width: max-content;
-    color: #fff;
-    transition: all 0.5s;
-    font-weight: 600;
-    opacity: 1;
-    @include adaptiveValue("font-size", 26, 22);
+    @include adaptiveValue("font-size", 26, 20);
+    transition: all 0.3s ease;
+    padding: toRem(16) toRem(24);
+    border-radius: 10px;
+    background: #1c1b1b;
+    box-shadow:
+        inset 3px 3px 5px #0e0e0e,
+        inset -3px -3px 5px #302e2e;
+    span {
+        display: block;
+        transition: transform 0.3s ease;
+        background: linear-gradient(to bottom, #0167ba, #10adf5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 500;
+        font-weight: 600;
+    }
+    &--sort {
+        // background: #161515;
+        font-size: toRem(14);
+        padding: toRem(10) toRem(12);
+        // box-shadow: none;
+    }
+
     @media (any-hover: hover) {
         &:hover {
-            opacity: 0.9;
+            box-shadow:
+                inset 5px 5px 5px #0e0e0e,
+                inset -5px -5px 5px #2f2e2e;
+            span {
+                transform: scale(0.98);
+            }
+        }
+    }
+    .light & {
+        border-radius: 10px;
+        background: #ededed;
+        box-shadow:
+            inset 3px 3px 8px #d8d8d8,
+            inset -3px -3px 8px #ffffff;
+        @media (any-hover: hover) {
+            &:hover {
+                box-shadow:
+                    inset 7px 7px 8px #d8d8d8,
+                    inset -7px -7px 8px #ffffff;
+            }
         }
     }
 }
