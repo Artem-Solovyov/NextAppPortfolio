@@ -32,7 +32,7 @@ const Login = () => {
         <input type="password" placeholder="Password" required className="login__input" />
         <button className="login__button">Login</button>
       </form>
-      <button onClick={() => signIn("google")}>Login with Goggle</button>
+      <button onClick={() => signIn("google")}>[Login with Goggle]</button>
     </div>
   );
 };

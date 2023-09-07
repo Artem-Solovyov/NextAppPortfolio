@@ -79,6 +79,7 @@ const Blog = () => {
                 </div>
                 <div className="blog__content">
                   <h1 className="blog__title">{item.title}</h1>
+                  <div className="blog__view">[View and comment]</div>
                   <p className="blog__desc">{item.desc}</p>
                   {item.createdAt === item.updatedAt ? (
                     <div className="blog__info">

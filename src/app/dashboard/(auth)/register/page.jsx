@@ -54,7 +54,7 @@ const Register = () => {
   return (
     <div className="register">
       <h1 className="register__title">Create an Account</h1>
-      <h className="register__subtitle">Please sign up to see dashboard</h>
+      <h5 className="register__subtitle">Please sign up to see dashboard</h5>
       <form action="" className="register__form form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -80,6 +80,12 @@ const Register = () => {
           value={avatar}
           onChange={(e) => setAvatar(e.target.value)}
         />
+        <h6>
+          *Please provide a link to an image from the following sources -{" "}
+          <Link target="_blanc" href="https://www.freepik.com/free-photos-vectors/avatar">
+            www.freepik.com
+          </Link>
+        </h6>
         <input
           type="password"
           placeholder="Password*"
@@ -89,7 +95,9 @@ const Register = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         {error && "Something went wrong"}
-        <button className={errorName ? "register__button register__button--off " : "register__button"}>Register</button>
+        <button className={errorName ? "register__button register__button--off " : "register__button"}>
+          [Register]
+        </button>
       </form>
     </div>
   );

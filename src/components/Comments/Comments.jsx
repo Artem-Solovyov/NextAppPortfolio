@@ -40,6 +40,7 @@ const Comments = ({ idPost }) => {
   };
   return (
     <div className="comments">
+      <h2 className="comments__title">Comments</h2>
       {session.status == "authenticated" ? (
         <div className="comments__form">
           <input
@@ -49,33 +50,49 @@ const Comments = ({ idPost }) => {
             onChange={(e) => setValue(e.target.value)}
             className="comments__input"
           />
-          <button onClick={handleSubmit}>Commit</button>
+          <button onClick={handleSubmit} className="comments__button">
+            Commit
+          </button>
         </div>
       ) : (
-        <div className="comments__nocoment">
-          <span>Нажаль ви не можете коментувати пости. Пройдіть авторизацію</span>
-          <Link href="/dashboard/login">LogIn</Link>
+        <div className="comments__none">
+          <div className="comments__nocoment">Unfortunately, you cannot comment on posts.</div>
+          <Link href="/dashboard/login" className="comments__button">
+            LogIn
+          </Link>
         </div>
       )}
-
       <div className="comments__items">
         {isLoading ? (
           <h4>Loading...</h4>
         ) : (
           data.map((comment) => (
             <div className="comments__item item-comment" key={comment._id}>
-              <Image src={comment.image} alt={comment.comment} width={50} height={50} />
               <div className="item-comment__body">
-                <div className="item-comment__author">{comment.author}</div>
-                <div className="item-comment__content">{comment.comment}</div>
-                <div className="item-comment__day">{comment.createdAt.slice(0, 10)}</div>
-                <div className="item-comment__time">{comment.createdAt.slice(11, 16)}</div>
-
-                {session?.data?.user.name === comment.author ? (
-                  <button className="item-comment__delete" onClick={() => handleDelete(comment._id)}>
-                    Delete
-                  </button>
-                ) : null}
+                <div className="item-comment__content">
+                  {comment.comment}
+                  {session?.data?.user.name === comment.author ? (
+                    <button className="item-comment__delete comments__button" onClick={() => handleDelete(comment._id)}>
+                      Delete
+                    </button>
+                  ) : null}
+                </div>
+                <div className="item-comment__data">
+                  <div className="item-comment__author">
+                    <Image
+                      src={comment.image}
+                      alt={comment.comment}
+                      width={50}
+                      height={50}
+                      className="item-comment__avatar"
+                    />
+                    <div className="item-comment__name">{comment.author}</div>
+                  </div>
+                  <div className="item-comment__clock">
+                    <div className="item-comment__day">{comment.createdAt.slice(0, 10)}</div>
+                    <div className="item-comment__time">{comment.createdAt.slice(11, 16)}</div>
+                  </div>
+                </div>
               </div>
             </div>
           ))

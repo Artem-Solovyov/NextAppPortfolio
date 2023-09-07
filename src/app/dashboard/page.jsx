@@ -9,7 +9,7 @@ import useSWR from "swr";
 const Dashboard = () => {
   const session = useSession();
   const router = useRouter();
-  console.log(session.data);
+  // console.log(session.data);
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error, mutate, isLoading } = useSWR(`api/posts?username=${session?.data?.user.name}`, fetcher);
 
@@ -60,30 +60,40 @@ const Dashboard = () => {
     return (
       <div className="dashboard">
         <div className="dashboard__posts">
+          <h1 className="dashboard__title">My posts</h1>
           {isLoading
             ? "Loading..."
-            : data?.map((post) => (
+            : data.map((post) => (
                 <div className="dashboard__post" key={post._id}>
                   <div className="dashboard__image">
-                    <Image src={post.img} alt={post.title} width={200} height={200} className="dashboard__img" />
+                    <Image src={post.img} alt={post.title} width={200} height={130} className="dashboard__img" />
                   </div>
                   <h2 className="dashboard__post-title">{post.title}</h2>
-                  <div className="dashboard__delete" onClick={() => handleDelete(post._id)}>
-                    X
+                  <div className="dashboard__dash">
+                    <div className="dashboard__delete" onClick={() => handleDelete(post._id)}>
+                      X
+                    </div>
+                    <Link href={`/dashboard/edit/${post._id}`} className="dashboard__edit">
+                      Edit
+                    </Link>
                   </div>
-                  <Link href={`/dashboard/edit/${post._id}`} className="dashboard__edit">
-                    Редагувати
-                  </Link>
                 </div>
               ))}
+          {data?.length > 0 ? null : <h3>Your posts will be displayed here after you add them.</h3>}
         </div>
         <form className="dashboard__new" onSubmit={handleSubmit}>
-          <h1>Add New Post</h1>
+          <h1 className="dashboard__title">Add New Post</h1>
           <input type="text" placeholder="Title" className="dashboard__input" />
           <input type="text" placeholder="Desc" className="dashboard__input" />
           <input type="text" placeholder="Image" className="dashboard__input" />
+          <h6>
+            *Please provide a link to an image from the following sources -{" "}
+            <Link target="_blanc" href="https://www.pexels.com/ru-ru/search/web/">
+              www.pexels.com
+            </Link>
+          </h6>
           <textarea cols="30" rows="10" className="dashboard__textarea" />
-          <button className="dashboard__button"> Send</button>
+          <button className="dashboard__button">[Send]</button>
         </form>
       </div>
     );

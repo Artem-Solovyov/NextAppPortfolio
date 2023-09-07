@@ -16,7 +16,7 @@ const About = () => {
           <h1 className="about__title">Who am I?</h1>
           <p className="about__text">
             My name is Artem, and I have been involved in web development for two years, including one year of intensive
-            practice. I have created numerous single-page websites, including those related to cryptocurrencies. I've
+            practice. I have created numerous single-page websites, including those related to cryptocurrencies. Ive
             built websites using both pure React and in combination with Next.js. Additionally, I have experience with
             websites on the WordPress CRM system.
             <br />

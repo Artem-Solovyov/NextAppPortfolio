@@ -56,11 +56,12 @@ const Edit = ({ params }) => {
     if (!isLoading) {
       return (
         <form className="dashboard__new" onSubmit={handleUpdate}>
-          <h1>Edit Post</h1>
-          <div className="dashboard__image--02">
-            <Image src={data.img} alt={data.title} width={200} height={200} className="dashboard__img--02" />
-            <div className="dashboard__img-text">Нажаль ви не зможете змінити зображення.</div>
+          <h1 className="dashboard__title">Edit Post</h1>
+          <div className="dashboard__image--03">
+            <Image src={data.img} alt={data.title} width={1000} height={1000} className="dashboard__img--03" />
+            <div className="dashboard__img-text">Unfortunately, you will not be able to change the image.</div>
           </div>
+          <h5>Title:</h5>
           <input
             type="text"
             placeholder="Title"
@@ -68,6 +69,7 @@ const Edit = ({ params }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          <h5>Description:</h5>
           <input
             type="text"
             placeholder="Desc"
@@ -76,6 +78,7 @@ const Edit = ({ params }) => {
             onChange={(e) => setDesc(e.target.value)}
           />
           {/* <input type="text" placeholder="Image" className="dashboard__input" /> */}
+          <h5>Content:</h5>
           <textarea
             cols="30"
             rows="10"
@@ -83,7 +86,7 @@ const Edit = ({ params }) => {
             value={area}
             onChange={(e) => setArea(e.target.value)}
           />
-          <button className="dashboard__button">Оновити</button>
+          <button className="dashboard__button">[Update]</button>
         </form>
       );
     } else {

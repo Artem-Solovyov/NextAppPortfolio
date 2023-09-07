@@ -15,11 +15,11 @@ export default function Home() {
         <div className="hero__text">
           <p>
             Let me tell you a bit about this website. I developed this site to showcase my frontend development skills
-            using the React library and the Next.js framework. I've tried to fill it not only with functionality but
-            also with a pleasant design for a better user experience. Here, you can find an explore numerous posts added
-            by various individuals, and even register to contribute to the blog with your own posts and comments. You
-            can also delete and edit your posts, remove your comments, and sort the posts. Of course, this is not a
-            comprehensive demonstration of my capabilities, but I'm proud to show it to you as a showcase of my skills.
+            using the React library and the Next.js framework. Ive tried to fill it not only with functionality but also
+            with a pleasant design for a better user experience. Here, you can find an explore numerous posts added by
+            various individuals, and even register to contribute to the blog with your own posts and comments. You can
+            also delete and edit your posts, remove your comments, and sort the posts. Of course, this is not a
+            comprehensive demonstration of my capabilities, but Ivm proud to show it to you as a showcase of my skills.
           </p>
         </div>
 

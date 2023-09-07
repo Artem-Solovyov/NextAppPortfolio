@@ -1,27 +1,60 @@
 .auth {
+    width: 100%;
     text-align: center;
-    padding-top: toRem(40);
+    // padding-top: toRem(40);
     // .auth__link
     &__form {
         padding: toRem(30) 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: toRem(14);
     }
 
     &__link {
-        @include adaptiveValue("font-size", 26, 18);
-        line-height: 1.4;
-        padding: toRem(8) toRem(16);
-        border-radius: toRem(30);
-        background-color: #797373;
-        &:not(:last-child) {
-            margin: 0px toRem(20) 0px 0px;
-        }
+        width: toRem(140);
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        padding: toRem(12) toRem(22);
+        border-radius: 10px;
+        background: #242323;
+        box-shadow:
+            inset 1px 1px 5px #0e0e0e,
+            inset -1px -1px 5px #3a3838;
         @media (any-hover: hover) {
             &:hover {
-                background-color: #524e4e;
+                box-shadow:
+                    inset 3px 3px 5px #0e0e0e,
+                    inset -3px -3px 5px #3a3838;
+            }
+        }
+
+        .light & {
+            border-radius: 10px;
+            background: #ededed;
+            box-shadow:
+                inset 3px 3px 8px #d8d8d8,
+                inset -3px -3px 8px #ffffff;
+            @media (any-hover: hover) {
+                &:hover {
+                    box-shadow:
+                        inset 6px 6px 8px #d8d8d8,
+                        inset -6px -6px 8px #ffffff;
+                }
             }
         }
         &.active {
-            background-color: #524e4e;
+            box-shadow:
+                inset 3px 3px 5px #0e0e0e,
+                inset -3px -3px 5px #3a3838;
+            .light & {
+                box-shadow:
+                    inset 6px 6px 8px #c8c8c8,
+                    inset -6px -6px 8px #e3e3e3;
+            }
         }
     }
 }
